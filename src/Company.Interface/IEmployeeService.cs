@@ -6,6 +6,6 @@ namespace Company.Interface
 {
     public interface IEmployeeService
     {
-        Task<Employee> CreateEmployee(CreateEmployeeDto model);
+        Task<Employee> Create(CreateEmployeeDto model);
     }
 }

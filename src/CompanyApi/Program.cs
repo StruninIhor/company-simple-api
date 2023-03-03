@@ -1,4 +1,7 @@
+using Microsoft.AspNetCore.Diagnostics;
 using Serilog;
+using System.Net;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace CompanyApi
 {
