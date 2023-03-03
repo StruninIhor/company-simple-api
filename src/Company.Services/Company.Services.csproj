@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Company.Database\Company.Database.csproj" />
+    <ProjectReference Include="..\Company.Interface\Company.Interface.csproj" />
+  </ItemGroup>
+
+</Project>
