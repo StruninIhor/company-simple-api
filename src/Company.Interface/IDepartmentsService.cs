@@ -10,7 +10,7 @@ namespace Company.Interface
     public interface IDepartmentsService
     {
         Task<Department> Create(CreateDepartmentDto model);
-        Task<Department> Update(UpdateDepartmentDto model);
+        Task<Department> Update(int id, UpdateDepartmentDto model);
 
         IAsyncEnumerable<Department> Query(int? minEmployees);
     }

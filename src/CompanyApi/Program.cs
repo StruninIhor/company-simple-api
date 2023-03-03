@@ -1,8 +1,6 @@
+using Company.DependencyInjection;
 using CompanyApi.Middlewares;
-using Microsoft.AspNetCore.Diagnostics;
 using Serilog;
-using System.Net;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace CompanyApi
 {
@@ -22,6 +20,8 @@ namespace CompanyApi
 
                 // Add services to the container.
 
+                builder.Services.AddCompanyServices(builder.Configuration);
+
                 builder.Services.AddControllers();
                 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
                 builder.Services.AddEndpointsApiExplorer();
@@ -35,6 +35,8 @@ namespace CompanyApi
 
 
                 var app = builder.Build();
+
+                
 
                 app.UseMiddleware<ValidationExceptionMiddleware>();
 

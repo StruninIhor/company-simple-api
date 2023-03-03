@@ -14,7 +14,7 @@ namespace CompanyApi.Middlewares
         public ValidationExceptionMiddleware(RequestDelegate request) =>
             _request = request;
 
-        private async Task InvokeAsync(HttpContext context)
+        public async Task InvokeAsync(HttpContext context)
         {
             try
             {
@@ -25,6 +25,12 @@ namespace CompanyApi.Middlewares
                 context.Response.StatusCode = (int)HttpStatusCode.BadRequest;
                 context.Response.Headers.Clear();
                 await context.Response.WriteAsync(ex.Message ?? "Validation exception!");
+            }
+            catch (NotFoundException ex)
+            {
+                context.Response.StatusCode = (int)HttpStatusCode.NotFound;
+                context.Response.Headers.Clear();
+                await context.Response.WriteAsync(ex.Message ?? "Entity not found");
             }
         }
     }

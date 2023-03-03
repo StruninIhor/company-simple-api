@@ -5,6 +5,7 @@ using Company.Interface.Departments;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
+using System.ComponentModel.DataAnnotations;
 
 namespace CompanyApi.Controllers
 {
@@ -22,8 +23,8 @@ namespace CompanyApi.Controllers
         [HttpPost]
         public async Task<ActionResult<Department>> CreateDepartment(CreateDepartmentDto department) => Ok(await _departmentsService.Create(department));
         [HttpPut("{id:int}")]
-        public async Task<ActionResult<Department>> UpdateDepartment(UpdateDepartmentDto department) => Ok(await _departmentsService.Update(department));
+        public async Task<ActionResult<Department>> UpdateDepartment(int id, UpdateDepartmentDto department) => Ok(await _departmentsService.Update(id, department));
         [HttpGet]
-        public ActionResult<Department> GetDepartments([FromQuery] int minEmployees) => Ok(_departmentsService.Query(minEmployees));
+        public ActionResult<Department> GetDepartments([FromQuery] [Range(1, int.MaxValue)] int minEmployees) => Ok(_departmentsService.Query(minEmployees));
     }
 }
