@@ -362,3 +362,10 @@ MigrationBackup/
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
 src/ConsoleUploader/appsettings.json
+
+# Custom defined ignored files
+
+
+**/appsettings.development.json
+**/appsettings.staging.json
+**/appsettings.production.json
