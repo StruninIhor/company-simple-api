@@ -18,16 +18,6 @@ namespace CompanyApi.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<Employee>> CreateEmployee(CreateEmployeeDto employee)
-        {
-            try
-            {
-                return Ok(await _employeeService.Create(employee));
-            }
-            catch (ModelValidationException ex)
-            {
-                return BadRequest(ex);
-            }
-        }
+        public async Task<ActionResult<Employee>> CreateEmployee(CreateEmployeeDto employee) => Ok(await _employeeService.Create(employee));
     }
 }

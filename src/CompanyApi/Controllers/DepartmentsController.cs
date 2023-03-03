@@ -20,40 +20,10 @@ namespace CompanyApi.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<Department>> CreateDepartment(CreateDepartmentDto department)
-        {
-            try
-            {
-                return Ok(await _departmentsService.Create(department));
-            }
-            catch (ModelValidationException ex)
-            {
-                return BadRequest(ex);
-            }
-        }
+        public async Task<ActionResult<Department>> CreateDepartment(CreateDepartmentDto department) => Ok(await _departmentsService.Create(department));
         [HttpPut("{id:int}")]
-        public async Task<ActionResult<Department>> UpdateDepartment(UpdateDepartmentDto department)
-        {
-            try
-            {
-                return Ok(await _departmentsService.Update(department));
-            }
-            catch (ModelValidationException ex)
-            {
-                return BadRequest(ex);
-            }
-        }
+        public async Task<ActionResult<Department>> UpdateDepartment(UpdateDepartmentDto department) => Ok(await _departmentsService.Update(department));
         [HttpGet]
-        public async Task<ActionResult<Department>> GetDepartments([FromQuery]int minEmployees)
-        {
-            try
-            {
-                return Ok(_departmentsService.Query(minEmployees));
-            }
-            catch (ModelValidationException ex)
-            {
-                return BadRequest(ex);
-            }
-        }
+        public ActionResult<Department> GetDepartments([FromQuery] int minEmployees) => Ok(_departmentsService.Query(minEmployees));
     }
 }
